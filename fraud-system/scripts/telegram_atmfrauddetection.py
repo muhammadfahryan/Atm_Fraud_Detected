@@ -8,22 +8,22 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Kafka Consumer configuration
 consumer_config = {
-    'bootstrap.servers': 'node1.alldataint.com:9094,node2.alldataint.com:9094,node3.alldataint.com:9094',
+    'bootstrap.servers': 'localhost:9094,localhost2:9094,localhost3:9094',
     'sasl.mechanism': 'PLAIN',
     'group.id': 'group-fraud',
     'security.protocol': 'SASL_SSL',
     'auto.offset.reset': 'latest',
-    'sasl.username': 'dev',
-    'sasl.password': 'P@ssw0rd',
-    'ssl.ca.location': 'C:/Users/Sakuragi Hanamichi/Documents/FraudDetection_ATMACEH-main/fraud-system/data/ca.crt',
+    'sasl.username': 'user',
+    'sasl.password': 'password',
+    'ssl.ca.location': '/FraudDetection_ATMACEH-main/fraud-system/data/ca.crt',
 }
 
 consumer = Consumer(consumer_config)
 consumer.subscribe(['ATM_FRAUD_DETECTED'])
 
 # Telegram bot configuration
-bot_token = '6821890873:AAEfXwVTsubmnbAjlNDb2_V5Gs0HuJNM5B0'
-chat_id = '-4553184184'
+bot_token = 
+chat_id = 
 
 def send_telegram_message(message):
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
