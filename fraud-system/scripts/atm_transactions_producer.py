@@ -11,22 +11,22 @@ try:
     SCHEMA_REGISTRY = os.environ['SCHEMA_REGISTRY']
     CLIENT_ID = os.environ['CLIENT_ID']
 except KeyError as e:
-    KAFKA_BROKERS = "node1.alldataint.com:9094,node2.alldataint.com:9094,node3.alldataint.com:9094"
-    SCHEMA_REGISTRY = "https://node1.alldataint.com:8081"
+    KAFKA_BROKERS = "localhost:9094,localhost2:9094,localhost3:9094"
+    SCHEMA_REGISTRY = "https://localhost:8081"
     CLIENT_ID = "atm-transactions-producer"
 
 conf = {
-    'bootstrap.servers': 'node1.alldataint.com:9094,node2.alldataint.com:9094,node3.alldataint.com:9094',
+    'bootstrap.servers': KAFKA_BROKERS,
     'client.id': CLIENT_ID,
     'sasl.mechanism': 'PLAIN',
     'security.protocol': 'SASL_SSL',
-    'sasl.username': 'dev',
-    'sasl.password': 'P@ssw0rd',
-    'ssl.ca.location': 'C:/Users/Sakuragi Hanamichi/Documents/FraudDetection_ATMACEH-main/fraud-system/data/ca.crt',
-    'schema.registry.url': 'https://node1.alldataint.com:8081',
+    'sasl.username': 'user',
+    'sasl.password': 'password',
+    'ssl.ca.location': 'FraudDetection_ATMACEH-main/fraud-system/data/ca.crt',
+    'schema.registry.url': 'https://localhost:8081',
     'schema.registry.basic.auth.credentials.source': 'USER_INFO',
-    'schema.registry.basic.auth.user.info' : 'dev:P@ssw0rd',
-    'schema.registry.ssl.ca.location' : 'C:/Users/Sakuragi Hanamichi/Documents/FraudDetection_ATMACEH-main/fraud-system/data/ca.crt',
+    'schema.registry.basic.auth.user.info' : 'user:password',
+    'schema.registry.ssl.ca.location' : '/FraudDetection_ATMACEH-main/fraud-system/data/ca.crt',
 }
 
 value_schema_str = """
